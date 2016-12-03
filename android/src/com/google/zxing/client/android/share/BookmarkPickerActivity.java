@@ -32,8 +32,8 @@ import android.widget.ListView;
  */
 public final class BookmarkPickerActivity extends ListActivity {
   private static final String[] BOOKMARK_PROJECTION = {
-      Browser.BookmarkColumns.TITLE,
-      Browser.BookmarkColumns.URL
+      //Browser.BookmarkColumns.TITLE,
+      //Browser.BookmarkColumns.URL
   };
 
   static final int TITLE_COLUMN = 0;
@@ -48,8 +48,8 @@ public final class BookmarkPickerActivity extends ListActivity {
   protected void onCreate(Bundle icicle) {
     super.onCreate(icicle);
 
-    cursor = getContentResolver().query(Browser.BOOKMARKS_URI, BOOKMARK_PROJECTION,
-        BOOKMARK_SELECTION, null, null);
+    //cursor = getContentResolver().query(Browser.BOOKMARKS_URI, BOOKMARK_PROJECTION,
+        //BOOKMARK_SELECTION, null, null);
     startManagingCursor(cursor);
     setListAdapter(new BookmarkAdapter(this, cursor));
   }
@@ -59,8 +59,8 @@ public final class BookmarkPickerActivity extends ListActivity {
     if (cursor.moveToPosition(position)) {
       Intent intent = new Intent();
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-      intent.putExtra(Browser.BookmarkColumns.TITLE, cursor.getString(TITLE_COLUMN));
-      intent.putExtra(Browser.BookmarkColumns.URL, cursor.getString(URL_COLUMN));
+      //intent.putExtra(Browser.BookmarkColumns.TITLE, cursor.getString(TITLE_COLUMN));
+      //intent.putExtra(Browser.BookmarkColumns.URL, cursor.getString(URL_COLUMN));
       setResult(RESULT_OK, intent);
     } else {
       setResult(RESULT_CANCELED);
